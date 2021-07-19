@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven-3.8.1'
+        jdk 'openjdk-11'
+    }
+    stages {
+        stage ('Clean') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage ('Clone') {
+            steps {
+                git branch: 'main', url: "https://github.com/victorit/first_boot_maven.git"
+            }
+        }
+        stage ('Build') {
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
+        }
+        stage ('Upload file') {
+            steps {
+                rtUpload (
+                    // Obtain an Artifactory server instance, defined in Jenkins --> Manage Jenkins --> Configure System:
+                    serverId: "test_java",
+                    spec: """{
+                            "files": [
+                                    {
+                                        "pattern": "target/hello-world-*-SNAPSHOT.jar",
+                                        "target": "default-maven-local"
+                                   }
+                                ]
+                        }"""
+                )
+            }
+        }
+        
+
+    }
+  
+}
+
