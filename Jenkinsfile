@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('upload') {
+      steps {
+        archiveArtifacts '*.txt'
+      }
+    }
+
   }
 }
