@@ -9,7 +9,7 @@ pipeline {
 
     stage('upload') {
       steps {
-        archiveArtifacts(artifacts: '*.txt', allowEmptyArchive: true)
+        archiveArtifacts(artifacts: '*.*', allowEmptyArchive: true)
       }
     }
 
