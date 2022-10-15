@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('prepare') {
       steps {
-        echo 'hello'
+        echo $env
       }
     }
 
