@@ -45,22 +45,30 @@ pipeline {
             }
         }
         
-        stage ('Upload file') {
-            steps {
-                rtUpload (
+        // stage ('Upload file') {
+        //    steps {
+        //        rtUpload (
                     // Obtain an Artifactory server instance, defined in Jenkins --> Manage Jenkins --> Configure System:
-                    serverId: "test_java",
-                    spec: """{
-                            "files": [
-                                    {
-                                        "pattern": "target/hello-world-*-SNAPSHOT.jar",
-                                        "target": "default-libs-release-local"
-                                   }
-                                ]
-                        }"""
-                )
-            }
-        }
+        //            serverId: "test_java",
+        //            spec: """{
+        //                    "files": [
+        //                            {
+        //                                "pattern": "target/hello-world-*-SNAPSHOT.jar",
+        //                                "target": "default-libs-release-local"
+        //                           }
+        //                        ]
+        //                }"""
+        //        )
+        //    }
+        //}
+        
+        stage ('Deploy') {
+        rtMaven.deployer.deployArtifacts buildInfo
+    }
+        
+    stage ('Publish build info') {
+        server.publishBuildInfo buildInfo
+    }
         
 
     }
