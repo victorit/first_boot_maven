@@ -72,9 +72,9 @@ pipeline {
         
     stage ('Publish build info') {
     stepts {
-    script {
+    
         server.publishBuildInfo buildInfo
-        }
+      
         }
     }
         
