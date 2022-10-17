@@ -39,7 +39,7 @@ pipeline {
         stage ('Build') {
             steps {
             script{
-            rtMaven.run pom: 'default-libs-release-local/pom.xml', goals: 'install', buildInfo: buildInfo
+            rtMaven.run pom: 'pom.xml', goals: 'install', buildInfo: buildInfo
             //    sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
             }
