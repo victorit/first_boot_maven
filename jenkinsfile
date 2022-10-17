@@ -28,8 +28,8 @@ pipeline {
 
         rtMaven = Artifactory.newMavenBuild()
         rtMaven.tool = 'maven-3.8.1' // Tool name from Jenkins configuration
-        rtMaven.deployer releaseRepo: ARTIFACTORY_LOCAL_RELEASE_REPO, snapshotRepo: ARTIFACTORY_LOCAL_SNAPSHOT_REPO, server: server
-        rtMaven.resolver releaseRepo: ARTIFACTORY_VIRTUAL_RELEASE_REPO, snapshotRepo: ARTIFACTORY_VIRTUAL_SNAPSHOT_REPO, server: server
+        rtMaven.deployer releaseRepo: 'default-libs-release-local', snapshotRepo: 'default-libs-release-local', server: server
+        rtMaven.resolver releaseRepo: 'default-libs-release-local', snapshotRepo: 'default-libs-release-local', server: server
         rtMaven.deployer.deployArtifacts = false // Disable artifacts deployment during Maven run
 
         buildInfo = Artifactory.newBuildInfo()
