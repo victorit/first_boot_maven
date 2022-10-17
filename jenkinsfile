@@ -71,7 +71,7 @@ pipeline {
     }
         
     stage ('Publish build info') {
-    stepts {
+    steps {
     
         server.publishBuildInfo buildInfo
       
