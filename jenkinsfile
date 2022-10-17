@@ -24,7 +24,7 @@ pipeline {
         steps {
         script {
         // Obtain an Artifactory server instance, defined in Jenkins --> Manage Jenkins --> Configure System:
-        server = Artifactory.server SERVER_ID
+        server = Artifactory.server 'test_java'
 
         rtMaven = Artifactory.newMavenBuild()
         rtMaven.tool = MAVEN_TOOL // Tool name from Jenkins configuration
