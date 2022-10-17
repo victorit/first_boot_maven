@@ -63,11 +63,19 @@ pipeline {
         //}
         
         stage ('Deploy') {
+        steps {
+        script {
         rtMaven.deployer.deployArtifacts buildInfo
+        }
+        }
     }
         
     stage ('Publish build info') {
+    stepts {
+    script {
         server.publishBuildInfo buildInfo
+        }
+        }
     }
         
 
