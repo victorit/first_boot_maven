@@ -29,7 +29,7 @@ pipeline {
                             "files": [
                                     {
                                         "pattern": "target/hello-world-*-SNAPSHOT.jar",
-                                        "target": "default-maven-local"
+                                        "target": "default-libs-release-local"
                                    }
                                 ]
                         }"""
