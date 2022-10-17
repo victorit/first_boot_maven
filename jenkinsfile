@@ -21,6 +21,8 @@ pipeline {
         }
         
         stage ('Artifactory configuration') {
+        steps {
+        
         // Obtain an Artifactory server instance, defined in Jenkins --> Manage Jenkins --> Configure System:
         server = Artifactory.server SERVER_ID
 
@@ -31,6 +33,8 @@ pipeline {
         rtMaven.deployer.deployArtifacts = false // Disable artifacts deployment during Maven run
 
         buildInfo = Artifactory.newBuildInfo()
+        
+        }
         }
         stage ('Build') {
             steps {
