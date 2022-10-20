@@ -13,8 +13,10 @@ pipeline {
     stages {
         stage ('Clean') {
             steps {
+              script {
                 log.info('Start clean env.WORKSPACE')
                 cleanWs()
+              }
             }
         }
         stage ('Clone') {
