@@ -1,4 +1,4 @@
-@Library ('shared_libraries') _
+@Library("sharedLibs") _
 
 def server
 def buildInfo
