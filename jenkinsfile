@@ -1,3 +1,5 @@
+@Library ('shared_libraries') _
+
 def server
 def buildInfo
 def rtMaven
@@ -11,6 +13,7 @@ pipeline {
     stages {
         stage ('Clean') {
             steps {
+                log.info('Start clean env.WORKSPACE')
                 cleanWs()
             }
         }
